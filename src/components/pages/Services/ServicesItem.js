@@ -4,9 +4,9 @@ import SvcItem from './SvcItem';
 
 const ServicesItem = ({serviceItem}) => {
     return (
-        <>
-            <SvcItem servicesItem={serviceItem}/>
-        </>
+        <div>
+            <SvcItem serviceItem={serviceItem} />
+        </div>
     );
 };
 
