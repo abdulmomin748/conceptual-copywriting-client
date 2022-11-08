@@ -28,7 +28,6 @@ const Header = () => {
     const menuItems = <>
         <li className='font-semibold '><NavLink className='bg-white text-black' to='/home'>Home</NavLink></li>
         <li className='font-semibold'><NavLink className='bg-white text-black'  to='/courses'>Service</NavLink></li>
-        <li className='font-semibold'><NavLink className='bg-white text-black'  to='/faq'>Faq</NavLink></li>
         <li className='font-semibold'><NavLink className='bg-white text-black'  to='/blog'>Blog</NavLink></li>
         {
             user?.uid ? 
