@@ -8,7 +8,7 @@ const Package = () => {
                 <div className="container px-4 mx-auto">
                     <div className="max-w-2xl mx-auto mb-16 text-center">
                         <span className="font-bold tracking-wider text-2xl text-yellow-700">Pricing</span>
-                        <h2 className="text-4xl font-bold lg:text-5xl">STANDARD PACKAGES</h2>
+                        <h2 className="text-3xl font-bold lg:text-4xl">STANDARD PACKAGES</h2>
                     </div>
                     <div className="flex flex-wrap items-stretch -mx-4">
                         <div className="flex w-full mb-8 sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0">

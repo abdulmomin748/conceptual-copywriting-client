@@ -23,7 +23,7 @@ const Blog = () => {
                         <AccordionHeader className='' onClick={() => handleOpen(1)}>
                         what is cors?
                         </AccordionHeader>
-                        <AccordionBody className='text-[18px]  h-[300px] font-medium custom-accordion'>
+                        <AccordionBody className='text-[18px] font-medium custom-accordion'>
                         CORS stands for Cross-Origin Resource Sharing . It allows us to relax the security applied to an API. This is done by bypassing the Access-Control-Allow-Origin headers, which specify which origins can access the API.
                         </AccordionBody>
                     </Accordion>    
