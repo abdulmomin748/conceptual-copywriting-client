@@ -11,11 +11,11 @@ const Blog = () => {
         setOpen(open === value ? 0 : value);
     };
     return (
-        <section className="md:pt-20 pt-16 accordion  px-5 lg:px-4 flex justify-center flex-col max-w-[730px] m-auto text-center">
+        <section className="md:pt-20 pt-16 accordion min-h-[80vh] px-5 lg:px-4 flex justify-center flex-col max-w-[730px] m-auto text-center">
             <title>F Blog</title>
             <meta name="description" content="Helmet application" />
             <h1 className="text-4xl text-black question-title font-bold course-title custom-brder relative  mb-4 pb-4">
-                Know More About Programming
+                Questions
             </h1>
             <div className='pt-8 pb-16 text-left '>
                 <Fragment>

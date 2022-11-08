@@ -1,5 +1,6 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
+import Footer from '../components/pages/Shered/Footer';
 import Header from '../components/pages/Shered/Header';
 
 const Main = () => {
@@ -7,6 +8,7 @@ const Main = () => {
         <div>
             <Header />
             <Outlet />
+            <Footer />
         </div>
     );
 };
