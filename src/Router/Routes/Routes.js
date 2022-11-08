@@ -1,11 +1,18 @@
-import React from 'react';
+import Home from "../../components/pages/Home/Home";
+import Main from "../../Layout/Main";
 
-const Routes = () => {
-    return (
-        <div>
-            
-        </div>
-    );
-};
+const { createBrowserRouter } = require("react-router-dom");
 
-export default Routes;
+const router = createBrowserRouter([
+    {
+        path: '/',
+        element: <Main />,
+        children: [
+            {
+                path: '/',
+                element: <Home />
+            }
+        ]
+    }
+])
+export default router;
