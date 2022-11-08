@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom';
 import logo from '../../../assets/hdr-logo.png'
 const Footer = () => {
     return (
-        <div className='border-t-2'>
-            
+        <div className='border-t-2 mt-24'>
             <footer className="p-4 bg-white sm:p-6 dark:bg-gray-900 max-w-7xl mx-auto">
                 <div className="md:flex md:justify-between">
                     <div className="mb-6 md:mb-0">
