@@ -6,7 +6,7 @@ const Services = () => {
     const services = useLoaderData();
     return (
         <div className='max-w-7xl mx-auto py-20 pt-32'>
-            <h1 className='text-4xl text-center font-bold uppercase  mb-20'>My Services</h1>
+            <h1 className='text-4xl text-center font-bold uppercase  mb-16'>My Services</h1>
             <div className='grid grid-cols-3 gap-x-5 gap-y-16 text-left'>
                 {
                     services.map(serviceItem => <ServicesItem key={serviceItem._id} serviceItem={serviceItem}  />)
