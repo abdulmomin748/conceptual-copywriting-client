@@ -1,40 +1,72 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link, useLoaderData, useParams } from 'react-router-dom';
+import "antd/dist/antd.css";
+import { Link, useLoaderData, useNavigate, } from 'react-router-dom';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
-import avater from '../../../assets/avatar.png'
-import star from '../../../assets/star.png'
+import avater from '../../../assets/avatar.png';
 import ReviewItem from './ReviewItem';
+import { Rate } from 'antd';
+import Swal from 'sweetalert2';
 const ServiceDetails = () => {
     const {description, img, price, serviceName, _id} = useLoaderData();
+    const navigate = useNavigate();
     const {user} = useContext(AuthContext)
     const [review, setReview] = useState([])
     console.log(review)
-    const userPhoto = user?.photoURL;
     useEffect(() => {
-        fetch('http://localhost:5000/displayReview')
+        fetch(`http://localhost:5000/displayReview/${_id}`)
         .then(res => res.json())
         .then(data => {
             setReview(data);
         })
-    },[])
+    },[_id])
     // add review
-    const handlePost = event => {
+    let handlePost;
+    if(user){
+            handlePost = event => {
+            event.preventDefault();
+            const form = event.target;
+            const textArea = form.textarea.value;
+            const review = {
+                textArea,
+                userPhoto: user?.photoURL,
+                userName: user?.displayName,
+                userEmail: user?.email,
+                isVarified: user?.emailVerified,
+                serviceId: _id,
+                serviceName,
+                price,
+            }
+            fetch('http://localhost:5000/addReview',{
+                method: 'POST',
+                headers: {
+                    "content-type": 'application/json'
+                },
+                body: JSON.stringify(review)
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Review Added Succesfully!!',
+                    timer: 1500
+                });
+            })
+            .catch(err => console.log(err));
+        }
+    }
+    else{
+        handlePost = event => {
         event.preventDefault();
-        const form = event.target;
-        const textArea = form.textarea.value;
-        const review = {textArea, userPhoto}
-        fetch('http://localhost:5000/addReview',{
-            method: 'POST',
-            headers: {
-                "content-type": 'application/json'
-            },
-            body: JSON.stringify(review)
+        Swal.fire({
+            icon: 'error',
+            title: 'Plz Login First!!',
+            timer: 4000,
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
+        .then(() => {
+            navigate('/login')
         })
-        .catch(err => console.log(err));
+        }
     }
 
 
@@ -64,29 +96,26 @@ const ServiceDetails = () => {
                                     user?.photoURL ? <div className='flex items-center'>
                                             <img className='rounded-full w-20 h-20 ml-auto'src={user?.photoURL} alt="User" srcset="" />
                                             <div className='text-left ml-3'>
-                                                <h5 className='text-2xl'>{user?.displayName}</h5>
-                                                <p>Your review will be posted publically on the web.</p>
+                                                <h5 className='text-2xl mb-0'>{user?.displayName}</h5>
+                                                <p className='mb-0'>Your review will be posted publically on the web.</p>
                                             </div>
                                         </div>
                                     :
                                     <div className='flex items-center justify-end'>
                                         <img src={avater} alt="Avater" srcset="" />
                                         <div className='text-left ml-3'>
-                                                <h5 className='text-2xl'>{user?.displayName}</h5>
-                                                <p>Your review will be posted publically on the web.</p>
+                                                <h5 className='text-2xl  mb-0'>{user?.displayName}</h5>
+                                                <p className='mb-0'>Your review will be posted publically on the web.</p>
                                             </div>
                                     </div>   
                                 }
+                                
                                 <div className='flex justify-end'>
-                                    <Link><img src={star} alt="" srcset="" /></Link>
-                                    <Link><img src={star} alt="" srcset="" /></Link>
-                                    <Link><img src={star} alt="" srcset="" /></Link>
-                                    <Link><img src={star} alt="" srcset="" /></Link>
-                                    <Link><img src={star} alt="" srcset="" /></Link>
+                                    <Rate />
                                 </div>
                             </div>
                             <div>
-                                <textarea name='textarea' className="textarea textarea-bordered w-full resize-none h-48 text-[20px] text-white max-w-3xl" placeholder="Describe your exprerience..."></textarea>
+                                <textarea name='textarea' className="textarea textarea-bordered w-full resize-none h-48 text-[20px] text-white max-w-3xl" placeholder="Describe your exprerience..." required></textarea>
                             </div>
                             <button type="submit" className=" text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xl px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add Review</button>
                         </form>

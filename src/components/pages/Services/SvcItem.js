@@ -7,10 +7,10 @@ const SvcItem = ({serviceItem}) => {
     return (
         <div>
             <div className="card border shadow-xl">
-                <figure className="px-10 pt-10">
+                <figure className="px-10 pt-10 border-b pb-4">
                     <PhotoProvider>
                         <PhotoView src={img}>
-                            <Link><img src={img} alt="" srcset="" /></Link>
+                            <Link><img src={img} alt="" className='h-[165px]' srcset="" /></Link>
                         </PhotoView>
                     </PhotoProvider>
                 </figure>
@@ -18,7 +18,7 @@ const SvcItem = ({serviceItem}) => {
                     <h2 className="card-title capitalize text-2xl font-bold">{serviceName}</h2>
                     <p className='text-[20px] mb-2'>
                         {
-                            description.length > 100  ? description.slice(0, 100) + '.....' : description
+                            description?.length > 100  ? description.slice(0, 100) + '.....' : description
                         }
                     </p>
                     <p className='mb-2 font-bold'>

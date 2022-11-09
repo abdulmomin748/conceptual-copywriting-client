@@ -32,8 +32,8 @@ const Header = () => {
         {
             user?.uid ? 
             <>
-                <li className='font-semibold'><NavLink className='bg-white text-black'  to='/courses'>My Reviews</NavLink></li>
-                <li className='font-semibold'><NavLink className='bg-white text-black'  to='/courses'>Add Service</NavLink></li>
+                <li className='font-semibold'><NavLink className='bg-white text-black'  to='/myReviews'>My Reviews</NavLink></li>
+                <li className='font-semibold'><NavLink className='bg-white text-black'  to='/addService'>Add Service</NavLink></li>
                 <li className='font-semibold'><button onClick={handleLogOut} className='w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xl px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'>Log Out</button></li>
             </>
             :

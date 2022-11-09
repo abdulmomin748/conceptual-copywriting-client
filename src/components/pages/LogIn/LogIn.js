@@ -8,7 +8,8 @@ const LogIn = () => {
     const navigate = useNavigate();
     const {signIn} = useContext(AuthContext);
     const location = useLocation();
-    const from = location.state?.form?.pathName || '/';
+    const from = location.state?.from?.pathname || '/';
+    console.log(from, location)
     const handleSignIn = event => {
         event.preventDefault();
         const form = event.target;
