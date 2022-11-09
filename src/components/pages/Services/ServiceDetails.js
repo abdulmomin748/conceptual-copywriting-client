@@ -11,7 +11,7 @@ const ServiceDetails = () => {
     const navigate = useNavigate();
     const {user} = useContext(AuthContext)
     const [review, setReview] = useState([])
-    console.log(review)
+    console.log(review.length)
     useEffect(() => {
         fetch(`http://localhost:5000/displayReview/${_id}`)
         .then(res => res.json())
@@ -75,18 +75,29 @@ const ServiceDetails = () => {
             <h1 className='text-4xl text-center font-bold uppercase  mb-16'>Service Details</h1>
             <div className='service-details border rounded p-5'>
                 <h2 className='text-2xl font-bold'><span className='border-b-2'>Service:</span> {serviceName}</h2>
-                <img src={img} alt="" srcset="" />
+                <img className='mb-8' src={img} alt="" srcset="" />
                 <p><span className='border-b-2 font-bold'>Info:</span> {description}</p>
                 <div className='mt-4'>
                     <p><span className='border-b-2 font-bold'>Price:</span> {price}$</p>
                 </div>
             </div>
             <div className='review mt-20'>
-                <h1 className='text-4xl text-center font-bold uppercase  mb-16'>All Reviews</h1>
+                <h1 className='text-4xl text-center font-bold uppercase  mb-12'>All Reviews Here</h1>
                 <div className='text-right  border rounded p-5'>
                     <div className='review-details border-dashed border-b-2 mb-12 pb-8'>
                         {
-                            review.map(reviewItem => <ReviewItem key={reviewItem._id} reviewItem={reviewItem} />)
+                          review.length === 0 ?   
+                          
+                           <div className='min-h-[20vh] pt-5 flex items-center justify-center flex-col'>
+                                <h3 className='text-center text-3xl '>"No reviews were added for this service."</h3>
+                                <p>Started with your first review</p>
+                            </div>
+                           :
+                           <>
+                           {
+                               review.map(reviewItem => <ReviewItem key={reviewItem._id} reviewItem={reviewItem} />)
+                           }
+                          </>
                         }
                     </div>
                     <div>
@@ -96,7 +107,7 @@ const ServiceDetails = () => {
                                     user?.photoURL ? <div className='flex items-center'>
                                             <img className='rounded-full w-20 h-20 ml-auto'src={user?.photoURL} alt="User" srcset="" />
                                             <div className='text-left ml-3'>
-                                                <h5 className='text-2xl mb-0'>{user?.displayName}</h5>
+                                                <h5 className='text-2xl capitalize mb-0'>{user?.displayName}</h5>
                                                 <p className='mb-0'>Your review will be posted publically on the web.</p>
                                             </div>
                                         </div>
@@ -104,7 +115,7 @@ const ServiceDetails = () => {
                                     <div className='flex items-center justify-end'>
                                         <img src={avater} alt="Avater" srcset="" />
                                         <div className='text-left ml-3'>
-                                                <h5 className='text-2xl  mb-0'>{user?.displayName}</h5>
+                                                <h5 className='text-2xl mb-0 capitalize'>{user?.displayName}</h5>
                                                 <p className='mb-0'>Your review will be posted publically on the web.</p>
                                             </div>
                                     </div>   

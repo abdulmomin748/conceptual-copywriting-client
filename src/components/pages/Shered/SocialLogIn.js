@@ -35,7 +35,7 @@ const SocialLogIn = () => {
     }
     return (
         <>
-            <button onClick={handleSignInWithPopUp} class="bg-gray-100 rounded-[100%]  w-10 h-10 font-semibold text-white justify-center items-center flex space-x-2">
+            <button onClick={handleSignInWithPopUp} className="bg-gray-100 rounded-[100%]  w-10 h-10 font-semibold text-white justify-center items-center flex space-x-2">
                 <img src={gmail} alt="" srcset="" />
             </button>
         </>

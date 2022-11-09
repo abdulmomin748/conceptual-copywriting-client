@@ -6,7 +6,7 @@ import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
 
 const Register = () => {
-    const {createUser} = useContext(AuthContext);
+    const {createUser, updateProfileName} = useContext(AuthContext);
     const location = useLocation();
     const from = location.state?.form?.pathName || '/';
     const navigate = useNavigate();
@@ -14,11 +14,16 @@ const Register = () => {
     const handleRegister = event => {
         event.preventDefault();
         const form = event.target;
+        const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
-        
+       
         createUser(email, password)
         .then((result) => {
+
+            updateProfileName(name)
+            .then().catch(err =>console.error(err));
+            
             const user = result.user;
             Swal.fire({
                 icon: 'success',

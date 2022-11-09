@@ -6,8 +6,9 @@ const ReviewItem = ({reviewItem}) => {
         <div className='text-left flex mb-5'>
             <div className='max-w-[67px] w-full h-[67px]'>
                 {
-                    reviewItem?.userPhoto? <>
-                        <img src={reviewItem.userPhoto} className=' rounded-full' alt="" srcset="" />
+                    reviewItem?.userPhoto? 
+                    <>
+                        <img src={reviewItem?.userPhoto} className=' rounded-full' alt="" srcset="" />
                         
                     </>
                     :
@@ -15,10 +16,11 @@ const ReviewItem = ({reviewItem}) => {
                 }
             </div>
             <div className='ml-5  break-words break-all mt-2'>
-                <span>
-                    {reviewItem.isVarified ? 'varified': 'not varified'}
+                <span className='font-semibold'>
+                    {reviewItem?.isVarified ? 'varified': 'not varified'}
                 </span>
-                <p className='mb-0 '>{reviewItem.textArea}</p>
+                <h5 className='mb-0 font-bold capitalize'>{reviewItem?.userName}</h5>
+                <p className='mb-0 '>{reviewItem?.textArea}</p>
             </div>
         </div>
     );

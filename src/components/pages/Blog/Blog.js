@@ -21,34 +21,34 @@ const Blog = () => {
                 <Fragment>
                     <Accordion open={open === 1}>
                         <AccordionHeader className='' onClick={() => handleOpen(1)}>
-                        what is cors?
+                            Difference between SQL and NoSQL?
                         </AccordionHeader>
                         <AccordionBody className='text-[18px] font-medium custom-accordion'>
-                        CORS stands for Cross-Origin Resource Sharing . It allows us to relax the security applied to an API. This is done by bypassing the Access-Control-Allow-Origin headers, which specify which origins can access the API.
+                            SQL databases are vertically scalable, while NoSQL databases are horizontally scalable. SQL databases are table-based, while NoSQL databases are document, key-value, graph, or wide-column stores. SQL databases are better for multi-row transactions, while NoSQL is better for unstructured data like documents or JSON.
                         </AccordionBody>
                     </Accordion>    
                     <Accordion open={open === 2}>
                         <AccordionHeader className='text-left' onClick={() => handleOpen(2)}>
-                        Why are you using firebase and What other options do you have to implement authentication?
+                            What is JWT, and how does it work?
                         </AccordionHeader>
                         <AccordionBody className='text-[18px]  font-medium '>
-                        Firebase helps you develop high-quality apps, grow your user base and each feature works independently, and they work even better together. Usually, authentication by a server entails the use of a user name and password. Other ways to authenticate can be through cards, retina scans, voice recognition, and fingerprints.
+                            JWT (JSON Web Token)? JSON Web Token (JWT) is an open standard (RFC 7519) for securely transmitting information between parties as JSON object. It is compact, readable and digitally signed using a private key/ or a public key pair by the Identity Provider(IdP).
                         </AccordionBody>
                     </Accordion>
                     <Accordion open={open === 3}>
                         <AccordionHeader className='' onClick={() => handleOpen(3)}>
-                        How does the private route work?
+                            What is the difference between javascript and NodeJS?
                         </AccordionHeader>
                         <AccordionBody className='text-[18px]  h-32 font-medium '>
-                        The private route component is similar to the public route, the only change is that redirect URL and authenticate condition. If the user is not authenticated he will be redirected to the login page and the user can only access the authenticated routes If he is authenticated (Logged in)
+                            JavaScript is a client-side scripting language that is lightweight, cross-platform, and interpreted. Node. On the other hand, Js is a server-side scripting language built on the V8 engine.
                         </AccordionBody>
                     </Accordion>
                     <Accordion open={open === 4}>
                         <AccordionHeader className='' onClick={() => handleOpen(4)}>
-                        What is node and How does Node work? 
+                            How does NodeJS handle multiple requests at the same time?
                         </AccordionHeader>
                         <AccordionBody className='text-[18px]  h-32 font-medium '>
-                        Node.js is an open-source backend javascript runtime environment. It is a used as backend service where javascript works on the server-side of the application. This way javascript is used on both frontend and backend. Node.js runs on chrome v8 engine which converts javascript code into machine code, it is highly scalable, lightweight, fast, and data-intensive.
+                            NodeJS receives multiple client requests and places them into EventQueue. NodeJS is built with the concept of event-driven architecture. NodeJS has its own EventLoop which is an infinite loop that receives requests and processes them
                         </AccordionBody>
                     </Accordion>
                 </Fragment>
