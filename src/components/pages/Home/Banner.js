@@ -17,7 +17,7 @@ const Banner = () => {
                 </div> 
                 <div id="slide2" className="carousel-item relative bg-cover flex justify-center items-center bg-no-repeat w-full" style={{backgroundImage: `url(${bnrImg})`}}>
                     <div className="max-w-5xl custom-bnnr">
-                        <h1 className="mb-5 text-6xl font-bold">I’M JANE</h1>
+                        <h1 className="mb-5 text-6xl font-bold text-gray-400">I’M JANE</h1>
                         <h2 className="mb-5 text-5xl font-bold text-white">A CONCEPTUAL COPYWRITER</h2>
                         <button className="btn rounded mt-8 btn-warning w-[220px] pt-2 pb-1 text-white font-bold">My Services</button>
                     </div>
@@ -28,7 +28,7 @@ const Banner = () => {
                 </div> 
                 <div id="slide3" className="carousel-item relative bg-cover flex justify-center items-center bg-no-repeat w-full" style={{backgroundImage: `url(${bnrImg})`}}>
                     <div className="max-w-5xl custom-bnnr">
-                        <h1 className="mb-5 text-6xl font-bold">I’M JANE</h1>
+                        <h1 className="mb-5 text-6xl font-bold text-gray-400">I’M JANE</h1>
                         <h2 className="mb-5 text-5xl font-bold text-white">A CONCEPTUAL COPYWRITER</h2>
                         <button className="btn rounded mt-8 btn-warning w-[220px] pt-2 pb-1 text-white font-bold">My Services</button>
                     </div>
@@ -39,7 +39,7 @@ const Banner = () => {
                 </div> 
                 <div id="slide4" className="carousel-item relative bg-cover flex justify-center items-center bg-no-repeat w-full" style={{backgroundImage: `url(${bnrImg})`}}>
                     <div className="max-w-5xl custom-bnnr">
-                        <h1 className="mb-5 text-6xl font-bold">I’M JANE</h1>
+                        <h1 className="mb-5 text-6xl font-bold text-gray-400">I’M JANE</h1>
                         <h2 className="mb-5 text-5xl font-bold text-white">A CONCEPTUAL COPYWRITER</h2>
                         <button className="btn rounded mt-8 btn-warning w-[220px] pt-2 pb-1 text-white font-bold">My Services</button>
                     </div>
