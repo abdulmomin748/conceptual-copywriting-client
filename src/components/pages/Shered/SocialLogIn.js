@@ -7,6 +7,7 @@ import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
 import { setAuthToken } from '../../../api/api';
 
+
 const SocialLogIn = () => {
     const navigate = useNavigate();
     const location = useLocation();
@@ -19,13 +20,13 @@ const SocialLogIn = () => {
         signInWithGmailPopup()
         .then( result => {
             const user = result.user;
-            navigate(from, {replace: true})
             Swal.fire({
                 icon: 'success',
-                title: 'User Create Succesfully!!',
+                title: 'Login Succesfully!!',
                 timer: 1500
             });
-            setAuthToken(user)
+            setAuthToken(user);
+            navigate(from, {replace: true})
         })
         .catch(err => {
             Swal.fire({

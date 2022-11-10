@@ -1,5 +1,5 @@
 # Project Name: Learning Is Easy
-## Live Link: https://personal-service-9dc51.web.app/
+## Live Link: https://conceptual-writing.web.app/
 
 ### Simple build for production
 * $ npm run build

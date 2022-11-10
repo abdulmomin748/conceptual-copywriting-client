@@ -6,6 +6,7 @@ import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
 import { setAuthToken } from '../../../api/api';
 
+
 const Register = () => {
     const {createUser, updateProfileName} = useContext(AuthContext);
     const location = useLocation();
@@ -23,10 +24,9 @@ const Register = () => {
         .then((result) => {
 
             updateProfileName(name)
-            .then().catch(err =>console.error(err));
             
             const user = result.user;
-            setAuthToken(user)
+            setAuthToken(user);
             Swal.fire({
                 icon: 'success',
                 title: 'User Create Succesfully!!',

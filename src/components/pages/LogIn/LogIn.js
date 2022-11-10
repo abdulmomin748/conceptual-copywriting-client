@@ -22,7 +22,7 @@ const LogIn = () => {
             setAuthToken(user)
             Swal.fire({
                 icon: 'success',
-                title: 'User Create Succesfully!!',
+                title: 'Login Succesfully!!',
                 timer: 1500
               });
             navigate(from, {replace: true});
