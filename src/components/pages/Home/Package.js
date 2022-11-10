@@ -10,8 +10,8 @@ const Package = () => {
                         <span className="font-bold tracking-wider text-2xl text-yellow-700">Pricing</span>
                         <h2 className="text-3xl font-bold lg:text-4xl">STANDARD PACKAGES</h2>
                     </div>
-                    <div className="flex flex-wrap items-stretch -mx-4">
-                        <div className="flex w-full mb-8 sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0">
+                    <div className="flex flex-wrap  items-stretch -mx-4">
+                        <div className="flex w-full mb-8 sm:px-4 justify-center md:w-1/2 lg:w-1/3 lg:mb-0">
                             <div className="flex flex-col p-6 space-y-6 rounded sm:p-8 shadow bg-gray-100">
                                 <div className="space-y-2">
                                     <h4 className="text-2xl font-bold">Consultation</h4>
@@ -43,7 +43,7 @@ const Package = () => {
                                 <button type="button" className="inline-block px-5 py-3 font-semibold tracking-wider text-center rounded bg-gray-800 text-white">Get Started</button>
                             </div>
                         </div>
-                        <div className="flex w-full mb-8 sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0">
+                        <div className="flex w-full mb-8 sm:px-4 justify-center md:w-1/2 lg:w-1/3 lg:mb-0">
                             <div className="flex flex-col p-6 space-y-6 rounded shadow sm:p-8 bg-violet-400 bg-gray-100 text-gray-900">
                                 <div className="space-y-2">
                                     <h4 className="text-2xl font-bold">Blog Article</h4>
@@ -82,7 +82,7 @@ const Package = () => {
                                 <Link rel="noopener noreferrer" href="#" className="inline-block w-full px-5 py-3 font-bold tracking-wider text-center rounded bg-gray-800 text-white">Get Started</Link>
                             </div>
                         </div>
-                        <div className="w-full mb-8 sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0">
+                        <div className="flex w-full mb-8 sm:px-4 justify-center md:w-1/2 lg:w-1/3 lg:mb-0">
                             <div className="p-6 space-y-6 rounded shadow sm:p-8 bg-gray-100">
                                 <div className="space-y-2">
                                     <h4 className="text-2xl font-bold">SEO Strategy</h4>

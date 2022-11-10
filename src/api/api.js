@@ -14,7 +14,7 @@ export const setAuthToken = user => {
     .then(data => {
        
         localStorage.setItem('personalService', data.token)
-        console.log(data);
+        console.log(data.token);
     })
     .catch(err => console.error(err))
 }

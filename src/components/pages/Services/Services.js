@@ -9,7 +9,7 @@ const Services = () => {
 
     return (
         
-        <>
+        <div className='px-4'>
             {loading && (
                 <div role="status" className='min-h-[100vh] flex justify-center items-center'>
                 <svg aria-hidden="true" class="mr-2 w-20 h-20 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -20,18 +20,18 @@ const Services = () => {
             </div>
             )}
             <div className='max-w-7xl mx-auto py-20 pt-32'>
-            <Helmet>
-                <title>Services</title>
-            </Helmet>
-            <h1 className='text-4xl text-center font-bold uppercase  mb-16'>My Services</h1>
-            <div className='grid grid-cols-3 gap-x-5 gap-y-16 text-left'>
-                {
-                    services.map(serviceItem => <ServicesItem key={serviceItem._id} serviceItem={serviceItem}  />)
-                }
-            </div>
+                <Helmet>
+                    <title>Services</title>
+                </Helmet>
+                <h1 className='text-4xl text-center font-bold uppercase  mb-16'>My Services</h1>
+                <div className='grid  lg:grid-cols-3 grid-cols-[420px] justify-center md:grid-cols-2 gap-5 text-left'>
+                    {
+                        services.map(serviceItem => <ServicesItem key={serviceItem._id} serviceItem={serviceItem}  />)
+                    }
+                </div>
             </div>
         
-        </>
+        </div>
         
     );
 };

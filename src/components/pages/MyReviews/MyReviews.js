@@ -32,7 +32,10 @@ const MyReviews = () => {
     console.log(reviews)
     const handleReviewDelete = id => {
         fetch(`http://localhost:5000/myReviews/${id}`, {
-            method: "DELETE"
+            method: "DELETE",
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('personalService')}`
+            }
         })
         .then(res => res.json())
         .then(data => {
@@ -59,7 +62,8 @@ const MyReviews = () => {
         fetch(`http://localhost:5000/myReviews/${id}`,{
             method: 'PATCH',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                    authorization: `Bearer ${localStorage.getItem('personalService')}`
             },
             body: JSON.stringify(updateReview)
         })
@@ -80,7 +84,7 @@ const MyReviews = () => {
     }
 
     return (
-        <div className='pt-24 max-w-7xl mx-auto'>
+        <div className='pt-24 px-4 max-w-7xl mx-auto'>
             <Helmet>
                 <title>My Reviews</title>
             </Helmet>

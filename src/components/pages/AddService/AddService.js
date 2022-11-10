@@ -37,7 +37,7 @@ const AddService = () => {
 
     }
     return (
-        <div className='max-w-7xl mx-auto py-20 pt-32'>
+        <div className='max-w-7xl mx-auto py-20 pt-32 pb-0'>
             <Helmet>
                 <title>Add Service</title>
             </Helmet>
