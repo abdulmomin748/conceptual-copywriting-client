@@ -4,6 +4,7 @@ import SocialLogIn from '../Shered/SocialLogIn';
 import facebookIcon from '../../../assets/fa.svg';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
+import { setAuthToken } from '../../../api/api';
 const LogIn = () => {
     const navigate = useNavigate();
     const {signIn} = useContext(AuthContext);
@@ -18,13 +19,15 @@ const LogIn = () => {
         signIn(email, password)
         .then((result) => {
             const user = result.user;
+            setAuthToken(user)
             Swal.fire({
                 icon: 'success',
                 title: 'User Create Succesfully!!',
                 timer: 1500
               });
             navigate(from, {replace: true});
-            form.reset()
+            form.reset();
+            console.log(user);
           })
           .catch(error => {
             Swal.fire({

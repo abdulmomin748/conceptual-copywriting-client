@@ -1,4 +1,5 @@
 import React from 'react';
+import {Helmet} from "react-helmet";
 import Swal from 'sweetalert2';
 const AddService = () => {
     const handleAddService = event => {
@@ -37,6 +38,9 @@ const AddService = () => {
     }
     return (
         <div className='max-w-7xl mx-auto py-20 pt-32'>
+            <Helmet>
+                <title>Add Service</title>
+            </Helmet>
             <h1 className='text-4xl mb-8 text-center font-bold uppercase'>Add Service</h1>
             <div>
                 <div className="min-h-[50vh]">

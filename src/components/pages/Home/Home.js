@@ -4,6 +4,7 @@ import ServiceItem from './ServiceItem';
 import Banner from './Banner';
 import LetsTalk from './LetsTalk';
 import Package from './Package';
+import {Helmet} from "react-helmet";
 
 
 const Home = () => {
@@ -11,6 +12,9 @@ const Home = () => {
     console.log(services);
     return (
         <div>
+            <Helmet>
+                <title>Home</title>
+            </Helmet>
             <Banner />
             <div className='pt-28 pb-10 services-section max-w-7xl m-auto text-center'>
                 <h1 className='text-4xl font-bold uppercase  mb-16'>My Services</h1>

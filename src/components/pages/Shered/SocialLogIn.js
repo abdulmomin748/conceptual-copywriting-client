@@ -5,6 +5,7 @@ import gmail from '../../../assets/gmail.svg';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 // import { setAuthToken } from '../../../api/api';
 import Swal from 'sweetalert2';
+import { setAuthToken } from '../../../api/api';
 
 const SocialLogIn = () => {
     const navigate = useNavigate();
@@ -24,6 +25,7 @@ const SocialLogIn = () => {
                 title: 'User Create Succesfully!!',
                 timer: 1500
             });
+            setAuthToken(user)
         })
         .catch(err => {
             Swal.fire({

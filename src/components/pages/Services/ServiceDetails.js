@@ -6,10 +6,12 @@ import avater from '../../../assets/avatar.png';
 import ReviewItem from './ReviewItem';
 import { Rate } from 'antd';
 import Swal from 'sweetalert2';
+import {Helmet} from "react-helmet";
 const ServiceDetails = () => {
     const {description, img, price, serviceName, _id} = useLoaderData();
     const navigate = useNavigate();
-    const {user} = useContext(AuthContext)
+    const {user} = useContext(AuthContext);
+    const [refresh, setRefresh] = useState(false)
     const [review, setReview] = useState([])
     console.log(review.length)
     useEffect(() => {
@@ -18,7 +20,7 @@ const ServiceDetails = () => {
         .then(data => {
             setReview(data);
         })
-    },[_id])
+    },[_id, refresh])
     // add review
     let handlePost;
     if(user){
@@ -45,12 +47,14 @@ const ServiceDetails = () => {
             })
             .then(res => res.json())
             .then(data => {
+                setRefresh(!refresh)
                 console.log(data);
                 Swal.fire({
                     icon: 'success',
                     title: 'Review Added Succesfully!!',
                     timer: 1500
                 });
+                form.reset();
             })
             .catch(err => console.log(err));
         }
@@ -72,10 +76,13 @@ const ServiceDetails = () => {
 
     return (
         <div className='pt-24 max-w-7xl mx-auto'>
+            <Helmet>
+                <title>Service Details</title>
+            </Helmet>
             <h1 className='text-4xl text-center font-bold uppercase  mb-16'>Service Details</h1>
             <div className='service-details border rounded p-5'>
                 <h2 className='text-2xl font-bold'><span className='border-b-2'>Service:</span> {serviceName}</h2>
-                <img className='mb-8' src={img} alt="" srcset="" />
+                <img className='mb-8 h-[500px]' src={img} alt="" srcset="" />
                 <p><span className='border-b-2 font-bold'>Info:</span> {description}</p>
                 <div className='mt-4'>
                     <p><span className='border-b-2 font-bold'>Price:</span> {price}$</p>

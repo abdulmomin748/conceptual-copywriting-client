@@ -3,18 +3,32 @@ import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 import ReviewRowItem from './ReviewRowItem';
 import '../../All.css'
 import Swal from 'sweetalert2';
-
+import {Helmet} from "react-helmet";
 const MyReviews = () => {
-    const [reviews, setReviews] = useState([])
+    const [reviews, setReviews] = useState([]);
+    const {logOut} = useContext(AuthContext);
     const {user} = useContext(AuthContext);
     let serialReview = 1;
+    const [refresh, setRefresh] = useState(false);
     useEffect(() => {
-        fetch(`http://localhost:5000/myReviews?userEmail=${user.email}`)
-        .then(res => res.json())
-        .then(data => {
-            setReviews(data)
+        fetch(`http://localhost:5000/myReviews?userEmail=${user.email}`,{
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('personalService')}`
+            }
         })
-    }, [user?.email])
+        .then(res => {
+            if(res.status === 401 || res.status === 403 ){
+                return logOut()
+              }
+            console.log(res);
+            return res.json()
+        })
+        .then(data => {
+            console.log('recived', data);
+            setReviews(data)
+
+        })
+    }, [user?.email, refresh])
     console.log(reviews)
     const handleReviewDelete = id => {
         fetch(`http://localhost:5000/myReviews/${id}`, {
@@ -33,32 +47,43 @@ const MyReviews = () => {
             }
         })
     }
+    const handleUpdata = (event, id) => {
+        event?.preventDefault();
+        const form = event?.target;
+        const review = form?.reveiwTextArea?.value;
 
-    // const handleUpdata = (event, id) => {
-    //         event?.preventDefault();
-    //         const form = event?.target;
-    //         const textArea = form?.textArea?.value;
-    //         const updateReview = {
-    //             textArea,
-    //         }
-    //         console.log(id, updateReview);
+        console.log(review);
+        const updateReview = {
+            review
+        }
+        fetch(`http://localhost:5000/myReviews/${id}`,{
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updateReview)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            Swal.fire({
+                icon: 'success',
+                title: `Review Updated Succesfully !!`,
+                timer: 1500
+              });
+            form.reset();
+            setRefresh(!refresh)
+            event.preventDefault();
+        })
+        .catch(err => console.error(err))
 
-    //     // fetch(`http://localhost:5000/myReviews/${id}`,{
-    //     //     method: 'PATCH',
-    //     //     headers: {
-    //     //         'content-type': 'application/json'
-    //     //     },
-    //     //     body: JSON.stringify()
-    //     // })
-    //     // .then(res => res.json())
-    //     // .then(data => {
-    //     //     console.log(data);
-    //     // })
-    //     // .catch(err => console.error(err))
+    }
 
-    // }
     return (
         <div className='pt-24 max-w-7xl mx-auto'>
+            <Helmet>
+                <title>My Reviews</title>
+            </Helmet>
             <h1 className='text-4xl text-center font-bold uppercase  mb-16'>Reviews details here.</h1>
             <div>
                 {
@@ -76,7 +101,7 @@ const MyReviews = () => {
                                 </thead>
                                 <tbody>
                                     {
-                                        reviews.map(reviewItem => <ReviewRowItem handleReviewDelete={handleReviewDelete} serialReview={serialReview++} key={reviewItem._id} reviewItem ={reviewItem} dfltValue ={reviewItem.textArea}/>)     
+                                        reviews.map(reviewItem => <ReviewRowItem handleReviewDelete={handleReviewDelete} serialReview={serialReview++} key={reviewItem._id} handleUpdata={handleUpdata} reviewItem ={reviewItem} dfltValue ={reviewItem.textArea}/>)     
                                     }
                                 </tbody>
                             </table>
@@ -88,6 +113,7 @@ const MyReviews = () => {
                     )
                 }
             </div>
+            
         </div>
     );
 };

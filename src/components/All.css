@@ -40,3 +40,6 @@
     position: absolute;
     
 }
+.ant-modal-footer{
+    display: none!important;
+}
