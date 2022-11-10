@@ -11,7 +11,7 @@ const MyReviews = () => {
     let serialReview = 1;
     const [refresh, setRefresh] = useState(false);
     useEffect(() => {
-        fetch(`http://localhost:5000/myReviews?userEmail=${user.email}`,{
+        fetch(`https://personal-service-server.vercel.app/myReviews?userEmail=${user.email}`,{
             headers: {
                 authorization: `Bearer ${localStorage.getItem('personalService')}`
             }
@@ -31,7 +31,7 @@ const MyReviews = () => {
     }, [user?.email, refresh])
     console.log(reviews)
     const handleReviewDelete = id => {
-        fetch(`http://localhost:5000/myReviews/${id}`, {
+        fetch(`https://personal-service-server.vercel.app/myReviews/${id}`, {
             method: "DELETE",
             headers: {
                 authorization: `Bearer ${localStorage.getItem('personalService')}`
@@ -59,7 +59,7 @@ const MyReviews = () => {
         const updateReview = {
             review
         }
-        fetch(`http://localhost:5000/myReviews/${id}`,{
+        fetch(`https://personal-service-server.vercel.app/myReviews/${id}`,{
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json',
