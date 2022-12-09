@@ -1,4 +1,4 @@
-# Project Name: Learning Is Easy
+# Project Name: conceptual-writing
 ## Live Link: https://conceptual-writing.web.app/
 
 ### Simple build for production
